@@ -1,21 +1,41 @@
 /*********************************************************************************
 * Programmer: Michael Smith														 *
 * Class CptS 121, Fall 2017; Lab Section 21										 *
-* Programming Assignment: PA5													 *
-* Date: October 18, 2017														 *
-* Description: This program processes numbers, corresponding to student		     *
-* records read in from a file, and writes the required results to an output file.*
+* Programming Assignment: PA6													 *
+* Date: November 4, 2017														 *
+* Description: This program simulates a Player vs Computer game of battleship 	 *
 **********************************************************************************/
-
-
 #include "battleship.h"
-#ifndef Yahtzee_H
-#define Yahtzee_H
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h> // for printf and scanf
-#include <stdlib.h> //for standard library
-#include <math.h> //for math calculations
-#include <time.h> //for random num gen
 
 
-#endif
+
+
+
+int main(void)
+{
+	//time seed for ran gen
+	srand(time(NULL));
+
+	// Opens an input file "title.txt" for reading;
+	FILE *infile = NULL;
+
+	//opening infile for reading stream
+	infile = fopen("title.txt", "r");
+
+	//display ASCII Title
+	display_title(infile);
+
+	//closes file
+	fclose(infile);
+
+	//display welcome screen
+	display_welcome_screen();
+
+	//displays menu
+	display_menu();
+
+
+	return 0;
+}
+
+
