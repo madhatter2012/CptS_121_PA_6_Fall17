@@ -16,6 +16,7 @@ int main(void)
 	//time seed for ran gen
 	srand(time(NULL));
 
+
 	// Opens an input file "title.txt" for reading;
 	FILE *infile = NULL;
 
@@ -37,5 +38,7 @@ int main(void)
 
 	return 0;
 }
+
+
 
 

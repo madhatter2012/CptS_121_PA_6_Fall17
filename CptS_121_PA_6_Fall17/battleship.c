@@ -385,21 +385,213 @@ void man_place_ships(char board[][MAX_COLS], int num_rows, int num_cols)
 
 }
 
-void auto_place_ships(void)
-{
-
-}
-
-
-
-
 
 //Create a function randomly_place_ships_on_board() that randomly places the 5 types of ships on a given board.
+void auto_place_ships(char board[][MAX_COLS], int num_rows, int num_cols)
+{
+	int row = 0, col = 0; //ship_size = 0;
+	int dir = 0; //ship_type = '\0';
 
+	printf("\nOk, let's place ships automatically!\n");
 
+	//print game board function here
 
+	/////////////////////////////////////////////////////////////
+	//For Carrier
 
+	printf("Let's place the Carrier...\n"); //placing carrier
+											 //ship_type = 'c';
+											 //ship_size = 5;
 
+	dir = rand() % 2;
+
+	if (dir == 0) //direction if statement
+	{
+
+		do
+		{
+		 
+			row = rand() % 10; // num range 0 - 9
+			col = rand() % 6; // num range 0 - 5
+
+		} while ((row < 0) || (row > 9) || (col < 0) || (col >= 6));
+		 
+		for (int i = 0; i < 5; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'c';
+		}
+	}
+
+	else if (dir == 1) //direction if statement
+	{
+		do
+		{
+
+			col = rand() % 10; // num range 0 - 9
+			row = rand() % 6; // num range 0 - 5
+
+		} while ((row >= 6) || (row < 0) || (col > 0) || (col > 9));
+
+		for (int i = 0; i < 5; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'c'; 
+		}
+	}
+
+	///////////////////////////////////////////////////////////
+	//For Battleship
+	printf("Let's place your Battleship...\n"); //placing carrier
+												//ship_type = 'c';
+												//ship_size = 5;
+	dir = rand() % 2;
+
+	if (dir == 0) //direction if statement
+	{
+
+		do
+		{
+			row = rand() % 10; // num range 0 - 9 
+			col = rand() % 7; // num range 0 - 6
+
+		} while ((row < 0) || (row > 9) || (col < 0) || (col >= 7));
+
+		for (int i = 0; i < 4; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'b';
+		}
+	}
+
+	else if (dir == 1 ) //direction if statement
+	{
+		do
+		{
+
+			col = rand() % 10; // num range 0 - 9
+			row = rand() % 7; // num range 0 - 6
+
+		} while ((row >= 7) || (row < 0) || (col > 0) || (col > 9));
+
+		for (int i = 0; i < 4; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'b';
+		}
+	}
+
+	///////////////////////////////////////////////////////////
+	//For Cruiser
+	printf("Let's place your Carrier...\n"); //placing carrier
+											 //ship_type = 'c';
+											 //ship_size = 5;
+	dir = rand() % 2;
+
+	if (dir == 0) //direction if statement
+	{
+
+		do
+		{
+			row = rand() % 10; // num range 0 - 9
+			col = rand() % 8; // num range 0 - 7
+
+		} while ((row < 0) || (row > 9) || (col < 0) || (col >= 8));
+
+		for (int i = 0; i < 3; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'r';
+		}
+	}
+
+	else if (dir == 1) //direction if statement
+	{
+		do
+		{
+	
+			col = rand() % 10; // num range 0 - 9
+			row = rand() % 8; // num range 0 - 7
+
+		} while ((row >= 8) || (row < 0) || (col > 0) || (col > 9));
+
+		for (int i = 0; i < 3; ++i)//populating board with ship
+		{
+			board[row + i][col] = 'r';
+		}
+	}
+
+	///////////////////////////////////////////////////////////
+	//For Submarine
+	printf("Let's place your Carrier...\n"); //placing carrier
+											 //ship_type = 'c';
+											 //ship_size = 5;
+	dir = rand() % 2;
+
+	if (dir == 0) //direction if statement
+	{
+		do
+		{
+			row = rand() % 10; // num range 0 - 9
+			col = rand() % 8; // num range 0 - 7
+
+		} while ((row < 0) || (row > 9) || (col < 0) || (col >= 8));
+
+		for (int i = 0; i < 3; ++i)
+		{
+			board[row + i][col] = 's';
+		}
+	}
+
+	else if (dir == 1) //direction if statement
+	{
+		do
+		{
+
+			col = rand() % 10; // num range 0 - 9
+			row = rand() % 8; // num range 0 - 7
+
+		} while ((row >= 8) || (row < 0) || (col > 0) || (col > 9));
+
+		for (int i = 0; i < 3; ++i) //populating board with ship
+		{
+			board[row + i][col] = 's';
+		}
+	}
+
+	///////////////////////////////////////////////////////////
+	//For Destroyer
+	printf("Let's place your Destroyer...\n"); //placing carrier
+											   //ship_type = 'c';
+											   //ship_size = 5;
+	dir = rand() % 2;
+
+	if (dir == 0) //direction if statement
+	{
+
+		do
+		{
+			row = rand() % 10; // num range 0 - 9
+			col = rand() % 9; // num range 0 - 8
+
+		} while ((row < 0) || (row > 9) || (col < 0) || (col >= 9));
+
+		for (int i = 0; i < 2; ++i)
+		{
+			board[row + i][col] = 'd';
+		}
+	}
+
+	else if (dir == 1) //direction if statement
+	{
+		do
+		{
+			col = rand() % 10; // num range 0 - 9
+			row = rand() % 9; // num range 0 - 8
+
+		} while ((row >= 9) || (row < 0) || (col > 0) || (col > 9));
+
+		for (int i = 0; i < 2; ++i)
+		{
+			board[row + i][col] = 'd';
+		}
+	}
+}
 
 
 //Create a function check_shot() that determines if the shot taken was a hit or a miss.
