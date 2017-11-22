@@ -10,6 +10,9 @@
 #include <string.h> //for my fav strings, which are really just arrays of characters ending in a null character
 #define MAX_ROWS 10
 #define MAX_COLS 10 
+#define VALID 1
+#define INVALID 0
+
 
 
 //FUNCTIONS
@@ -21,6 +24,9 @@ int who_starts(void);
 void man_place_ships(char board[][MAX_COLS], int rows, int cols);
 void auto_place_ships(char board[][MAX_COLS], int rows, int cols);
 void print_p2_board(char board[][MAX_COLS], int rows, int cols);
+int check_shot(char board[][MAX_COLS], int target_row, int target_col, char *target_ship);
+int update_board(int shot);
+int display_board(int flag);
 
 
 

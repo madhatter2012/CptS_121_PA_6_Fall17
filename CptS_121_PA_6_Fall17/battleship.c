@@ -77,7 +77,7 @@ void init_board(char board[][MAX_COLS], int num_rows, int num_cols)
 	}
 }
 
-//prints the game board GRID!
+//prints the game board GRID for player 1
 void print_p1_board(char board[][MAX_COLS], int num_rows, int num_cols)
 {
 	int row_index = 0, col_index = 0;
@@ -93,6 +93,7 @@ void print_p1_board(char board[][MAX_COLS], int num_rows, int num_cols)
 	}
 }
 
+//prints the gameboard GRID for player 2
 void print_p2_board(char board[][MAX_COLS], int num_rows, int num_cols)
 {
 	int row_index = 0, col_index = 0;
@@ -107,6 +108,7 @@ void print_p2_board(char board[][MAX_COLS], int num_rows, int num_cols)
 		putchar('\n');
 	}
 }
+
 //Create a function select_who_starts_first() that determines if Player1 or Player2 goes first in the game.
 int who_starts(void)
 {
@@ -595,10 +597,63 @@ void auto_place_ships(char board[][MAX_COLS], int num_rows, int num_cols)
 
 
 //Create a function check_shot() that determines if the shot taken was a hit or a miss.
-//Create a function is_winner() that determines if a winner exists.
+int check_shot(char board[][MAX_COLS], int target_row, int target_col, char *target_ship)
+{
+	int shot = 0;
+
+	do {
+
+		//target query
+		printf("\nChoose your shot carefully, Seaman...\n");
+		printf("\nInput Target Row: ");
+		scanf("%d", &target_row);
+		printf("\nInput Target Column: ");
+		scanf("%d", &target_col);
+
+		//if statements for miss, valid, and hit shot checking
+		if ((board[target_row][target_col] == '~')) //shot hits water and misses!
+		{
+			shot = 0;
+			printf("It's a miss! The shot missed!!!");
+		}
+		else if ((board[target_row][target_col] == '*') || (board[target_row][target_col] == 'm'))//shot is invalid (already a hit or miss), loops on invalid
+		{
+			shot = INVALID;
+			printf("\nInvalid Target!\n");
+			printf("Target was previously fired upon!\n");
+		}
+		else //shot is a hit!
+		{
+			shot = 1; 
+			printf("\nIt's a HIT! OMG DIRECT HIT!!!\n");
+			*target_ship = board[target_row][target_col];
+			board[target_row][target_col] = '*';
+		}
+	}while (shot == INVALID); //loops on invalid shot (if shot is previously a hit or miss)
+
+	return shot;
+}
+
 //Create a function update_board() that updates the board every time a shot is taken. '*' indicates a hit and 'm' indicates a miss.
+int update_board(int shot)
+{
+
+}
+
 //Create a function display_board() that displays a board to the screen.Note that Player1's board should be displayed differently than Player2's board(see above).
 //Hint: pass in a flag(int) that stores whether or not you just passed in Player1's or Player2's board.Then perform the different logic for Player1's board versus Player2's board.
+int display_board(int flag)
+{
+	//perform different logic on p1 or p2's board
+}
+
+
+
+
+
+//Create a function is_winner() that determines if a winner exists.
+
+
 //Create a function output_current_move() that writes the position of the shot taken by the current player to the log file.It also writes whether or not it was a hit, miss, and if the ship was sunk.
 //Create a function check_if_sunk_ship() that determines if a ship was sunk.
 //Create a function output_stats() that writes the statistics collected on each player to the log file.
